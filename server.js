@@ -10,8 +10,10 @@ app.use(cors())
 
 app.get('/coins', (req, res) => {
     //use config since url arent to be used specified as alias in axios.request
+    
     const config = {
-        url: 'https://api.coingecko.com/api/v3/simple/price?ids=tower&vs_currencies=usd#',
+        url: 'https://api.coingecko.com/api/v3/simple/price?ids=tower&vs_currencies=php#',
+        // url: 'https://api.coingecko.com/api/v3/simple/price?ids='+ x + '&vs_currencies=usd#',
         headers : {
           accept : 'application/json'
       }
