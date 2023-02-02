@@ -1,6 +1,7 @@
 
 import {useState} from 'react';
 import './App.css';
+import Token from './token';
 
 function App() {
 
@@ -14,14 +15,18 @@ const [coins2, setCoins2] = useState(null);
 
 //fetching token unit in market 1
 const token = () => {
-  const x = document.getElementById("tokenID").value;
+  const x = document.getElementById("m1").value;
+
   setToken(x);
+  console.log("market 1 = " + x)
+
 }
 
 //fetching token unit in market 2
 const token2 = () => {
-  const x = document.getElementById("tokenID2").value;
-  setToken2(x);
+  const y = document.getElementById("m2").value;
+  setToken2(y);
+  console.log("market 2 = " + y)
 }
 //fetching token prices in market 1
   const getCoins = () => {
@@ -31,19 +36,24 @@ const token2 = () => {
   .catch(err => console.log(err))
 }
 
-//fetching token prices in market 2
+// fetching token prices in market 2
 const getCoins2 = () => {
   fetch('https://api.coingecko.com/api/v3/coins/' + tokenUnit2)
   .then((response) => response.json())
   .then(coins2 => setCoins2(coins2.market_data.current_price.php))
-  .catch(err => console.log(err))
+  .catch(err => console.log(coins2))
 }
 
   const tokenPrice = () => {
     getCoins();
+    console.log(getCoins);
+    setTimeout(5000);
     getCoins2();
+    console.log(getCoins2)
     document.getElementById("btn").disabled = true;
     setTimeout(buttonTime, 5000);
+
+
     }
   //shows the timer near the button
   // const showTimer = () => {
@@ -59,11 +69,18 @@ const getCoins2 = () => {
   return (
     <div display="inline" className='market'>
       <div display="inline">
-        <input onChange={token} id="tokenID" placeholder='Enter token symbol'></input>
+
+        <Token change={token} id="m1" />
+
+        <input  placeholder='Enter token symbol'></input>
         <h2>token price is of {tokenUnit} against PHP is = ₱{coins}</h2>
       </div>
-      <div  display="inline" className='market'>
-        <input onChange={token2} id="tokenID2" placeholder='Enter token symbol'></input>
+
+      <div  display="inline">
+
+      <Token change={token2} id="m2" />
+
+        <input placeholder='Enter token symbol'></input>
         <h2>token price is of {tokenUnit2} against PHP is = ₱{coins2}</h2>
       </div>
 
