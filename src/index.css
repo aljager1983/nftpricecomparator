@@ -12,6 +12,19 @@ code {
     monospace;
 }
 
-#market {
-  width: 50%;
+.container {
+  position: absolute;
+  
+}
+
+.market {
+  display: inline-block;
+  margin: 0 100px 0 100px
+  
+}
+
+button {
+  margin: 0;
+  position: absolute;
+ left: 50%;
 }

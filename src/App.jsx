@@ -46,10 +46,8 @@ const getCoins2 = () => {
 
   const tokenPrice = () => {
     getCoins();
-    console.log(getCoins);
-    setTimeout(5000);
-    getCoins2();
-    console.log(getCoins2)
+    setTimeout(getCoins2, 5000);
+    
     document.getElementById("btn").disabled = true;
     setTimeout(buttonTime, 5000);
 
@@ -67,25 +65,22 @@ const getCoins2 = () => {
 //fetching current exchange rate of USD to PHP
 
   return (
-    <div display="inline" className='market'>
-      <div display="inline">
-
+    <div className='container'>
+      <div className='market'>
         <Token change={token} id="m1" />
-
         <input  placeholder='Enter token symbol'></input>
         <h2>token price is of {tokenUnit} against PHP is = ₱{coins}</h2>
       </div>
 
-      <div  display="inline">
-
-      <Token change={token2} id="m2" />
-
+      <div className='market'>
+        <Token change={token2} id="m2" />
         <input placeholder='Enter token symbol'></input>
         <h2>token price is of {tokenUnit2} against PHP is = ₱{coins2}</h2>
       </div>
-
+      <div>
       <button type='submit' onClick={tokenPrice} id='btn'>SUBMIT</button>
-
+      </div>
+      
     </div>
   );
 }
