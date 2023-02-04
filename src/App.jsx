@@ -77,6 +77,7 @@ const getCoins2 = () => {
         <input placeholder='Enter token symbol'></input>
         <h2>token price is of {tokenUnit2} against PHP is = ₱{coins2}</h2>
       </div>
+      
       <div>
       <button type='submit' onClick={tokenPrice} id='btn'>SUBMIT</button>
       </div>

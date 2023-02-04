@@ -18,9 +18,10 @@ code {
 }
 
 .market {
-  display: inline-block;
-  margin: 0 100px 0 100px
-  
+  display: inline;
+  margin: 0 100px 0 100px;
+  border: 5px solid red;
+  max-width: 500px;
 }
 
 button {
