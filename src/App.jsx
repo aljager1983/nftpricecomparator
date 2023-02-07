@@ -17,8 +17,14 @@ const [coins2, setCoins2] = useState(null);
 const [nftP2, setNFTPrice2] = useState();
 const [finPrice2, setFinPrice2] = useState();
 
+const [sFee, setServiceFee] = useState();
+const [cFee, setCreatorsFee] = useState();
+
 const amount = () => {
   setNFTPrice1(document.getElementById('market1').value);
+  setNFTPrice2(document.getElementById('market2').value);
+  setServiceFee(document.getElementById('sFee').value);
+  setCreatorsFee(document.getElementById('cFee').value);
 
 }
 //fetching token unit in market 1
@@ -46,15 +52,29 @@ useEffect(() => {
   .then((response) => response.json())
   .then(data => setCoins(data.market_data.current_price.php))
   .catch(err => console.log(err))
-
-  
 }, [url])
 
+
+const url2 = 'https://api.coingecko.com/api/v3/coins/' + tokenUnit2;
+useEffect(() => {
+
+  
+//fetching token prices in market 1
+  fetch(url2)
+  .then((response) => response.json())
+  .then(data => setCoins2(data.market_data.current_price.php))
+  .catch(err => console.log(err))
+}, [url2])
 
 
   const tokenPrice = () => {
 
     setFinPrice1(coins * nftP1)
+
+    const x = (cFee + sFee) / 100;
+    const y = (coins2 * nftP2);
+    const z = (x * y)
+    setFinPrice2(y - z);
     document.getElementById("btn").disabled = true;
     document.getElementsByClassName("input").disabled = true;
     setTimeout(buttonTime, 5000);
@@ -73,39 +93,44 @@ useEffect(() => {
 
   }
 
-  const conlog = () => {
-   
-    console.log(nftP1 * coins)
-  }
+  
 //fetching current exchange rate of USD to PHP
 
  
 
   return (
-    <div className='container'>
+    <div>
       <div>
         <h2 className='nftInf'>NFT details here</h2>
       </div>
+    <div className='container'>
+      
       <div className='market'>
+        <h2 className='marketHeading'>Buying</h2>
         <Token change={token} id="m1" />
         <h2>Current price of token is: {coins}</h2>
         <input  placeholder='Enter nft price' id="market1" className='input' onChange={amount}></input>
         <h2>Current price of NFT is = ₱{finPrice1}</h2>
       </div>
-
+      
       <div className='market'>
+      <h2 className='marketHeading'>Selling</h2>
         <Token change={token2} id="m2" />
         <h2>Current price of token is: {coins2}</h2>
-        <input  placeholder='Enter nft price' id='nftPrice2' className='input'></input>
-        <h2>Current price of NFT is = ₱{finPrice2}</h2>
+        <input  placeholder='Enter nft price' id="market2" className='input' onChange={amount}></input>
+      
+        <input  placeholder='Service fee in %' id="sFee" className='input' onChange={amount}></input>
+        <input  placeholder='Creators fee in %' id="cFee" className='input' onChange={amount}></input>
+        
+        
+        <h2>Preferred selling price of NFT is = ₱{finPrice2}</h2>
       </div>
       
-      <div>
+      
       <button type='submit' onClick={tokenPrice} id='btn'>SUBMIT</button>
-      </div>
-      <div>
-      <button type='submit' onClick={conlog} id='con'>console</button>
-      </div>
+      
+      
+    </div>
     </div>
   );
 }
