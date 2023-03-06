@@ -127,12 +127,11 @@ useEffect(() => {
  
 
   return (
-    <div>
-      <div>
-        <h2 className='nftInf'>NFT details here</h2>
-      </div>
-    <div className='container'>
+    <div className="container">
       
+        <h1 className='nftInf'>NFT details here</h1>
+      
+    
       <div className='market'>
         <h2 className='marketHeading'>Buying</h2>
         <Token change={token} id="m1" />
@@ -148,17 +147,15 @@ useEffect(() => {
         <Token change={token2} id="m2"  />
         <p>Current price of token is: {coins2}</p>
         <input  placeholder='Enter nft price' id="market2" className='input' onChange={amount}></input>
-      
         <input  placeholder='Service fee in %' id="sFee" className='input' onChange={amount}></input>
         <input  placeholder='Creators fee in %' id="cFee" className='input' onChange={amount}></input>
-        
-        
         <p>Preferred selling price of NFT is = ₱{finPrice2}</p>
       </div>
+        <button type='submit' onClick={tokenPrice} id='btn'>SUBMIT</button>
       
-      <button type='submit' onClick={tokenPrice} id='btn'>SUBMIT</button>
       
-    </div>
+      
+    
     </div>
   );
 }
