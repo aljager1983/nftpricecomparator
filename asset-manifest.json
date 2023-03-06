@@ -1,10 +1,13 @@
 {
   "files": {
+    "main.css": "/nftpricecomparator/static/css/main.1435f33b.css",
     "main.js": "/nftpricecomparator/static/js/main.32239da9.js",
     "index.html": "/nftpricecomparator/index.html",
+    "main.1435f33b.css.map": "/nftpricecomparator/static/css/main.1435f33b.css.map",
     "main.32239da9.js.map": "/nftpricecomparator/static/js/main.32239da9.js.map"
   },
   "entrypoints": [
+    "static/css/main.1435f33b.css",
     "static/js/main.32239da9.js"
   ]
 }
