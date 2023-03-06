@@ -11,6 +11,7 @@ return (
           <option value="matic-network">matic-network</option>
           <option value="tower">tower</option>
           <option value="ethereum">eth</option>
+          <option value="usd-coin">usdc</option>
         </select>
     </div>
 )
