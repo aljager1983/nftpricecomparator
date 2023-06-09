@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Token from './token';
 
+// "homepage": "https://aljager1983.github.io/nftpricecomparator",
 
 function App() {
 
@@ -61,9 +62,9 @@ const token2 = () => {
 const url = 'https://api.coingecko.com/api/v3/coins/' + tokenUnit;
 
 useEffect(() => {
-  const today = new Date();
-const month = today.getMonth() + 1;
-const currentDate = today.getDate() + "-" + month + "-" + today.getFullYear()
+  // const today = new Date();
+// const month = today.getMonth() + 1;
+// const currentDate = today.getDate() + "-" + month + "-" + today.getFullYear()
 // setDate(currentDate)
   
   amount();
